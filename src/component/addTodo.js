@@ -25,8 +25,8 @@ class AddTodo extends React.Component{
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>新增代辦事項</label>
-                    <input type="text" onChange={this.handleChange} value={this.state.content}/>
+                    {/* <label>新增代辦事項</label> */}
+                    <input placeholder="新增代辦事項" type="text" onChange={this.handleChange} value={this.state.content}/>
                 </form>
             </div>
         )

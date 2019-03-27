@@ -1,6 +1,8 @@
 import React from 'react'
+import shortid from 'shortid'
 import Todos from './todos'
 import AddTodo from './addTodo'
+
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 class App extends React.Component{
     constructor(props){
@@ -18,7 +20,7 @@ class App extends React.Component{
             })
         }
         this.addTodo = (todo) =>{
-            todo.id =  Math.floor(Math.random()*1000);
+            todo.id =  shortid.generate();
             let todos = [...this.state.todos,todo]
             this.setState({
                 todos
