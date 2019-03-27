@@ -1,22 +1,41 @@
 import React from 'react'
-import Todos from './todos.js'
+import Todos from './todos'
+import AddTodo from './addTodo'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            todos:[
-                {id:1, content:'買牛奶'},
-                {id:2, content:'慢跑'}
-            ]
+            todos:[ ]
+        }
+        this.deleteTodo = (id) =>{
+            console.log(id)
+            const todos = this.state.todos.filter(todo=>{
+                return todo.id !== id
+            })
+            this.setState({
+                todos: todos
+            })
+        }
+        this.addTodo = (todo) =>{
+            todo.id =  Math.floor(Math.random()*1000);
+            let todos = [...this.state.todos,todo]
+            this.setState({
+                todos
+            })
+        }
     }
 
-    }
-    render(){
+    render() {
+        console.log(this)
         return(
+
            <div className="to-do-app container">
             <h1 className="center blue-text">待辦事項</h1>
-            <Todos todos={this.state.todos}/>
+            <AddTodo addTodo={this.addTodo}/>
+            <Todos todos={this.state.todos} deleteTodo={this.deleteTodo}/>
            </div>
+
         );
     }
 }
